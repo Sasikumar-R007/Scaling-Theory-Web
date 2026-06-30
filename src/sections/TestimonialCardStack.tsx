@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { motion, type TargetAndTransition } from 'framer-motion'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
+import LazyImage from '@/components/LazyImage'
 import {
   TESTIMONIALS,
   TESTIMONIAL_AUTO_INTERVAL_MS,
@@ -115,7 +116,7 @@ function TestimonialCardContent({
       <footer className="relative z-1 flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-3">
           {testimonial.avatar ? (
-            <img
+            <LazyImage
               src={testimonial.avatar}
               alt=""
               className="size-9 shrink-0 rounded-full object-cover sm:size-10"

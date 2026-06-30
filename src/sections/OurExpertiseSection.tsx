@@ -1,6 +1,7 @@
 import { motion, type Variants } from 'framer-motion'
 import { Check } from 'lucide-react'
 import expertiseVisual from '@/assests/exp1.jpg'
+import LazyImage from '@/components/LazyImage'
 import { cn } from '@/utils'
 import {
   EXPERTISE_CARDS,
@@ -65,11 +66,10 @@ function ExpertiseCard({
 
       {featured && (
         <div className="relative mt-auto w-[calc(100%+2rem)] -mx-4 sm:w-[calc(100%+2.5rem)] sm:-mx-5">
-          <img
+          <LazyImage
             src={expertiseVisual}
             alt="Data and AI hiring workflow with selective sourcing and fast replay insights"
-            className="block w-full h-auto"
-            loading="lazy"
+            className="block h-auto w-full"
           />
         </div>
       )}

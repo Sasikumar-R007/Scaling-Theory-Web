@@ -2,7 +2,12 @@ import { useState, type FormEvent } from 'react'
 import { cn } from '@/utils'
 import { submitContactForm } from '@/utils/contactForm'
 
-export default function ContactForm() {
+export interface ContactFormProps {
+  onSuccess?: () => void
+  bare?: boolean
+}
+
+export default function ContactForm({ onSuccess, bare = false }: ContactFormProps) {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -26,6 +31,7 @@ export default function ContactForm() {
       setEmail('')
       setPhone('')
       setContent('')
+      window.setTimeout(() => onSuccess?.(), 1400)
       return
     }
 
@@ -33,8 +39,7 @@ export default function ContactForm() {
     setFeedback(result.message)
   }
 
-  return (
-    <div className="contact-form-card relative rounded-2xl p-5 sm:p-6 lg:p-7">
+  const form = (
       <form
         className="relative z-10 flex flex-col gap-4 sm:gap-5"
         onSubmit={handleSubmit}
@@ -85,7 +90,6 @@ export default function ContactForm() {
             required
             autoComplete="tel"
             inputMode="tel"
-            // placeholder="+91 9900328009"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className="contact-input"
@@ -132,6 +136,13 @@ export default function ContactForm() {
           </p>
         )}
       </form>
+  )
+
+  if (bare) return form
+
+  return (
+    <div className="contact-form-card relative rounded-2xl p-5 sm:p-6 lg:p-7">
+      {form}
     </div>
   )
 }

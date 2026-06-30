@@ -1,4 +1,5 @@
 import { Play } from 'lucide-react'
+import ContactTrigger from '@/components/ContactTrigger'
 import { cn } from '@/utils'
 
 const pillFrame =
@@ -11,9 +12,9 @@ export default function HeroCtaButtons({ className }: { className?: string }) {
   return (
     <div className={cn('flex flex-wrap items-center gap-2', className)}>
       <span className={pillFrame}>
-        <a href="#contact" className={cn(pillInner, 'bg-cta text-foreground')}>
+        <ContactTrigger className={cn(pillInner, 'bg-cta text-foreground')}>
           Talk to Us
-        </a>
+        </ContactTrigger>
       </span>
 
       <span className={pillFrame}>

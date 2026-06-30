@@ -9,7 +9,9 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import logo from '@/assests/logos/logo.jpeg'
+import LazyImage from '@/components/LazyImage'
 import StaffOsTrademark from '@/components/StaffOsTrademark'
+import { useContactModal } from '@/context/ContactModalContext'
 import { cn, CONTACT_EMAIL, STAFFOS_URL } from '@/utils'
 
 const MUTED = '#a1a1a1'
@@ -25,15 +27,16 @@ const recruitmentLinks = [
 const staffOsLinks = [
   { label: 'Features', href: '#staffos' },
   { label: 'Benefits', href: '#why-us' },
-  { label: 'Request Demo', href: '#contact' },
-  { label: 'Client Access', href: '#contact' },
+  { label: 'Request Demo', href: '#contact', openContact: true },
+  { label: 'Client Access', href: '#contact', openContact: true },
+  { label: 'Visit StaffOS Website', href: STAFFOS_URL },
 ] as const
 
 const companyLinks = [
   { label: 'About Us', href: '#about' },
   { label: 'Careers', href: '#careers' },
   { label: 'Blog', href: '#blog' },
-  { label: 'Contact Us', href: '#contact' },
+  { label: 'Contact Us', href: '#contact', openContact: true },
 ] as const
 
 type SocialLink =
@@ -100,10 +103,12 @@ function FooterColumn({
   titleHref,
 }: {
   title: string
-  links: readonly { label: string; href: string }[]
+  links: readonly { label: string; href: string; openContact?: boolean }[]
   titleTrademark?: boolean
   titleHref?: string
 }) {
+  const { openContactModal } = useContactModal()
+
   const titleInner = (
     <>
       <span className="text-gradient-footer">{title}</span>
@@ -120,28 +125,39 @@ function FooterColumn({
           href={titleHref}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-start border-b border-[#333333] pb-2 text-sm font-semibold transition-opacity hover:opacity-85"
+          className="inline-flex items-start text-sm font-semibold transition-opacity hover:opacity-85"
         >
           {titleInner}
         </a>
       ) : (
-        <h3 className="inline-flex items-start border-b border-[#333333] pb-2 text-sm font-semibold">
+        <h3 className="inline-flex items-start text-sm font-semibold">
           {titleInner}
         </h3>
       )}
       <ul className="mt-4 space-y-2.5" role="list">
         {links.map((link) => (
           <li key={link.label}>
-            <a
-              href={link.href}
-              className="text-xs transition-opacity hover:opacity-80 sm:text-sm"
-              style={{ color: MUTED }}
-              {...(link.href.startsWith('http')
-                ? { target: '_blank', rel: 'noopener noreferrer' }
-                : {})}
-            >
-              {link.label}
-            </a>
+            {link.openContact ? (
+              <button
+                type="button"
+                onClick={openContactModal}
+                className="cursor-pointer text-left text-xs transition-opacity hover:opacity-80 sm:text-sm"
+                style={{ color: MUTED }}
+              >
+                {link.label}
+              </button>
+            ) : (
+              <a
+                href={link.href}
+                className="text-xs transition-opacity hover:opacity-80 sm:text-sm"
+                style={{ color: MUTED }}
+                {...(link.href.startsWith('http')
+                  ? { target: '_blank', rel: 'noopener noreferrer' }
+                  : {})}
+              >
+                {link.label}
+              </a>
+            )}
           </li>
         ))}
       </ul>
@@ -164,12 +180,13 @@ export default function Footer({ className }: FooterProps) {
         <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 lg:gap-8">
           <div className="sm:col-span-2 lg:col-span-1">
             <a href="/" className="inline-flex items-center gap-2.5">
-              <img
+              <LazyImage
                 src={logo}
                 alt="Scaling Theory"
                 className="h-8 w-auto shrink-0 object-contain"
                 width={32}
                 height={32}
+                priority
               />
               <span className="text-gradient-footer text-base font-semibold sm:text-lg">
                 ScalingTheory

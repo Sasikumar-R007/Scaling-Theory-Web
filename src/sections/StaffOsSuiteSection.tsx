@@ -10,6 +10,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import Section from '@/components/Section'
+import LazyImage from '@/components/LazyImage'
 import StaffOsTrademark from '@/components/StaffOsTrademark'
 import { cn } from '@/utils'
 import {
@@ -72,11 +73,10 @@ function SuitePreviewFrame({
           </div>
         </div>
         <div className="staffos-suite-preview-body">
-          <img
+          <LazyImage
             src={src}
             alt={alt}
             className="staffos-suite-preview-image"
-            loading="lazy"
           />
         </div>
       </div>

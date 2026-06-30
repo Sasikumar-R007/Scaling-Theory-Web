@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import LazyImage from '@/components/LazyImage'
 import {
   STAFFOS_PREVIEW_INTERVAL_MS,
   STAFFOS_PREVIEW_SLIDES,
@@ -31,6 +32,12 @@ export default function StaffOsPreviewCard() {
 
     return () => window.clearInterval(timer)
   }, [])
+
+  useEffect(() => {
+    const nextIndex = (activeIndex + 1) % STAFFOS_PREVIEW_SLIDES.length
+    const preload = new Image()
+    preload.src = STAFFOS_PREVIEW_SLIDES[nextIndex].image
+  }, [activeIndex])
 
   return (
     <article className="bg-gradient-staffos-card grid h-[180px] w-full max-w-[520px] grid-cols-[minmax(0,47%)_minmax(0,53%)] grid-rows-[auto_minmax(0,1fr)] overflow-hidden rounded-xl sm:h-[200px] sm:max-w-[480px]">
@@ -86,11 +93,12 @@ export default function StaffOsPreviewCard() {
             exit="exit"
             transition={slideTransition}
           >
-            <img
+            <LazyImage
               src={slide.image}
               alt={slide.imageAlt}
               className="block h-full w-full rounded-tl-xl object-cover object-left-top"
               draggable={false}
+              priority={activeIndex === 0}
             />
           </motion.div>
         </AnimatePresence>

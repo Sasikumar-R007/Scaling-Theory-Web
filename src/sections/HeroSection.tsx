@@ -1,5 +1,6 @@
 import { motion, type Variants } from 'framer-motion'
 import heroDashboard from '@/assests/hero/hero-dashboard.png'
+import LazyImage from '@/components/LazyImage'
 import Section from '@/components/Section'
 import HeroCtaButtons from '@/sections/HeroCtaButtons'
 import StaffOsPreviewCard from '@/sections/StaffOsPreviewCard'
@@ -96,13 +97,13 @@ export default function HeroSection() {
               aria-hidden="true"
             />
 
-            <img
+            <LazyImage
               src={heroDashboard}
               alt="StaffOS dashboard showing candidate pipeline, interview metrics, and team overview"
               className="relative z-10 h-full w-full object-contain object-bottom object-center lg:scale-[1.08] lg:object-right-bottom xl:scale-[1.12]"
               width={800}
               height={620}
-              fetchPriority="high"
+              priority
             />
           </div>
         </motion.div>

@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import logo from '@/assests/logos/logo.jpeg'
+import ContactTrigger from '@/components/ContactTrigger'
+import LazyImage from '@/components/LazyImage'
 import { useScrollSpy } from '@/hooks/useScrollSpy'
 import { cn } from '@/utils'
 import StaffOsTrademark from './StaffOsTrademark'
@@ -15,7 +17,6 @@ export interface NavbarProps {
   links?: NavLink[]
   activeHref?: string
   ctaLabel?: string
-  ctaHref?: string
   className?: string
 }
 
@@ -74,7 +75,6 @@ export default function Navbar({
   links = defaultLinks,
   activeHref = '#overview',
   ctaLabel = 'Talk to Us',
-  ctaHref = '#contact',
   className,
 }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
@@ -117,7 +117,13 @@ export default function Navbar({
   )
 
   return (
-    <header className={cn('sticky top-0 z-50 bg-background py-3 sm:py-3.5', className)}>
+    <>
+    <header
+      className={cn(
+        'fixed inset-x-0 top-0 z-50 border-b border-border-subtle bg-background/95 py-3 backdrop-blur-md sm:py-3.5',
+        className,
+      )}
+    >
       <nav
         className="relative mx-auto flex min-h-12 max-w-[1280px] items-center justify-between px-8 sm:px-12 lg:px-16 xl:px-20"
         aria-label="Main navigation"
@@ -126,12 +132,13 @@ export default function Navbar({
           href="/"
           className="relative z-10 flex shrink-0 items-center gap-2 transition-opacity hover:opacity-90"
         >
-          <img
+          <LazyImage
             src={logo}
             alt="Scaling Theory"
             className="h-8 w-auto shrink-0 object-contain"
             width={32}
             height={32}
+            priority
           />
           <span className="text-sm font-medium tracking-tight text-brand-wordmark">
             ScalingTheory
@@ -153,9 +160,11 @@ export default function Navbar({
           ))}
         </ul>
 
-        <a href={ctaHref} className={cn(ctaClasses, 'hidden lg:inline-flex lg:items-center lg:justify-center')}>
+        <ContactTrigger
+          className={cn(ctaClasses, 'hidden lg:inline-flex lg:items-center lg:justify-center')}
+        >
           {ctaLabel}
-        </a>
+        </ContactTrigger>
 
         <button
           type="button"
@@ -193,17 +202,18 @@ export default function Navbar({
             </ul>
 
             <div className="border-t border-border-subtle px-8 py-4 sm:px-12">
-              <a
-                href={ctaHref}
+              <ContactTrigger
                 onClick={() => setIsOpen(false)}
                 className={cn(ctaClasses, 'flex w-full items-center justify-center py-2.5')}
               >
                 {ctaLabel}
-              </a>
+              </ContactTrigger>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </header>
+    <div className="h-[60px] shrink-0 sm:h-[64px]" aria-hidden="true" />
+    </>
   )
 }

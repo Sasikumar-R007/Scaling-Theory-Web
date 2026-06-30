@@ -1,5 +1,6 @@
 import { type ReactNode } from 'react'
 import { Footer, Navbar } from '@/components'
+import { ContactModalProvider } from '@/context/ContactModalContext'
 
 export interface MainLayoutProps {
   children: ReactNode
@@ -7,12 +8,14 @@ export interface MainLayoutProps {
 
 export default function MainLayout({ children }: MainLayoutProps) {
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden">
-      <Navbar />
-      <main id="main-content" className="flex-1">
-        {children}
-      </main>
-      <Footer />
-    </div>
+    <ContactModalProvider>
+      <div className="flex min-h-screen flex-col overflow-x-hidden">
+        <Navbar />
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
+        <Footer />
+      </div>
+    </ContactModalProvider>
   )
 }

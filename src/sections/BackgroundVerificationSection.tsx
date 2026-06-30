@@ -1,5 +1,6 @@
 import { motion, type Variants } from 'framer-motion'
 import { ShieldCheck } from 'lucide-react'
+import LazyImage from '@/components/LazyImage'
 import Section from '@/components/Section'
 import {
   BGV_FEATURES,
@@ -94,7 +95,7 @@ export default function BackgroundVerificationSection() {
         <div className="bgv-cta-right flex flex-1 items-center justify-between gap-4 px-5 py-5 sm:justify-end sm:gap-5 sm:px-7 sm:py-6 lg:px-8">
           <div className="flex items-center pl-1">
             {BGV_TRUST_AVATARS.map((avatar, index) => (
-              <img
+              <LazyImage
                 key={avatar.id}
                 src={avatar.src}
                 alt={avatar.alt}
