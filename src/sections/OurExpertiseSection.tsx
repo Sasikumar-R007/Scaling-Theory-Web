@@ -1,6 +1,6 @@
 import { motion, type Variants } from 'framer-motion'
 import { Check } from 'lucide-react'
-import expertiseVisual from '@/assests/exp1.png'
+import expertiseVisual from '@/assests/exp1.jpg'
 import { cn } from '@/utils'
 import {
   EXPERTISE_CARDS,
@@ -113,7 +113,7 @@ export default function OurExpertiseSection() {
             Our Expertise
           </p>
 
-          <h2 className="text-gradient-expertise-heading text-xl font-bold leading-tight tracking-tight sm:text-2xl lg:text-[1.75rem] xl:text-[2rem]">
+          <h2 className="text-gradient-expertise-heading px-1 text-lg font-bold leading-tight tracking-tight sm:text-2xl lg:text-[1.75rem] xl:text-[2rem]">
             Talent Advisory & Hiring Expertise Across Functions
           </h2>
         </div>
@@ -138,7 +138,7 @@ export default function OurExpertiseSection() {
           {EXPERTISE_HIGHLIGHTS.map((item) => (
             <li
               key={item}
-              className="flex items-center gap-2 text-[10px] whitespace-nowrap sm:text-[11px]"
+              className="flex items-center gap-2 text-center text-[10px] sm:text-[11px]"
               style={{ color: LABEL_COLOR }}
             >
               <Check

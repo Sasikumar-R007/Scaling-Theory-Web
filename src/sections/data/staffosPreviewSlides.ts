@@ -1,14 +1,6 @@
-/**
- * StaffOS preview carousel slides.
- *
- * Image naming convention (place in src/assests/products/):
- *   staffos-preview-01.png
- *   staffos-preview-02.png
- *   staffos-preview-03.png
- *
- * Currently using pr1.png for all slides until additional assets are added.
- */
-import staffosPreview01 from '@/assests/products/pr1.png'
+import staffosPreview01 from '@/assests/hero/prv01.png'
+import staffosPreview02 from '@/assests/hero/prv02.jpeg'
+import staffosPreview03 from '@/assests/hero/prv03.jpg'
 
 export interface StaffOsPreviewSlide {
   id: string
@@ -22,26 +14,26 @@ export const STAFFOS_PREVIEW_SLIDES: StaffOsPreviewSlide[] = [
   {
     id: 'slide-01',
     image: staffosPreview01,
-    imageAlt: 'StaffOS kanban dashboard with candidate pipeline columns',
+    imageAlt: 'Client-specific dashboard with real-time hiring insights',
     title: 'Client-specific dashboards with real-time hiring insights',
     description:
       'Track jobs, candidates, interviews, and hiring progress in one dashboard.',
   },
   {
     id: 'slide-02',
-    image: staffosPreview01,
-    imageAlt: 'StaffOS hiring pipeline overview',
-    title: 'End-to-end visibility across every hiring stage',
+    image: staffosPreview02,
+    imageAlt: 'StaffOS Nudge intelligence for modern hiring',
+    title: 'Adaptive Nudge Intelligence for Modern Hiring',
     description:
-      'Monitor recruiter activity, interview progress, and closure rates in real time.',
+      'From intelligent nudges to automated escalations, StaffOS Nudge keeps every hiring conversation moving forward.',
   },
   {
     id: 'slide-03',
-    image: staffosPreview01,
-    imageAlt: 'StaffOS candidate tracking board',
-    title: 'One dashboard for your entire recruitment workflow',
+    image: staffosPreview03,
+    imageAlt: 'StaffOS Nudge automated hiring escalations',
+    title: 'Adaptive Nudge Intelligence for Modern Hiring',
     description:
-      'From sourcing to offer — manage candidates, teams, and metrics without switching tools.',
+      'From intelligent nudges to automated escalations, StaffOS Nudge keeps every hiring conversation moving forward.',
   },
 ]
 

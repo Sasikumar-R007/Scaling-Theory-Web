@@ -32,13 +32,13 @@ export default function HeroSection() {
     >
       <div className="relative z-10 mx-auto w-full max-w-7xl px-3 sm:px-4">
         <motion.div
-          className="flex w-full min-h-[calc(100vh-5.5rem)] flex-col lg:min-h-[calc(100vh-6.5rem)]"
+          className="flex w-full min-h-0 flex-col lg:min-h-[calc(100vh-6.5rem)]"
           variants={sectionVariants}
           initial="hidden"
           animate="visible"
         >
         <div className="relative z-10 grid flex-1 gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.1fr)] lg:items-stretch lg:gap-4 xl:gap-8">
-          <div className="flex flex-col justify-center gap-3.5 sm:gap-4 lg:justify-center lg:py-4">
+          <div className="flex flex-col justify-center gap-3.5 sm:gap-4 lg:-mt-8 lg:justify-start lg:pt-25 xl:-mt-12">
             <motion.div className="space-y-0.5" variants={fadeUp(0)}>
               <h1 className="font-heading text-[1.5rem] font-bold leading-[1.12] tracking-tight sm:text-[1.9rem] lg:text-[2.2rem] xl:text-[2.4rem]">
                 Fast Staffing. Full Visibility.
@@ -49,7 +49,7 @@ export default function HeroSection() {
             </motion.div>
 
             <motion.h2
-              className="font-heading text-xs font-bold leading-tight sm:text-sm lg:text-base xl:whitespace-nowrap"
+              className="font-heading text-xs font-bold leading-tight sm:text-sm lg:text-base lg:whitespace-nowrap"
               variants={fadeUp(0.08)}
             >
               <span className="text-gradient-hero-tagline">
@@ -78,7 +78,7 @@ export default function HeroSection() {
               <HeroCtaButtons />
             </motion.div>
 
-            <motion.div variants={fadeUp(0.32)} className="mt-1 lg:mt-2">
+            <motion.div variants={fadeUp(0.32)} className="mt-1 w-full lg:mt-2">
               <StaffOsPreviewCard />
             </motion.div>
           </div>
@@ -87,7 +87,7 @@ export default function HeroSection() {
         </div>
 
         <motion.div
-          className="relative mx-auto mt-4 w-full max-w-[440px] lg:pointer-events-none lg:absolute lg:right-0 lg:bottom-0 lg:mt-0 lg:max-w-[56%] xl:max-w-[54%]"
+          className="relative mx-auto mt-6 w-full max-w-[min(100%,440px)] sm:mt-8 lg:pointer-events-none lg:absolute lg:right-0 lg:bottom-0 lg:mt-0 lg:max-w-[56%] xl:max-w-[54%]"
           variants={fadeUp(0.12)}
         >
           <div className="relative w-full lg:min-h-[420px] xl:min-h-[480px]">

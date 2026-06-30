@@ -49,24 +49,36 @@ function SuiteFeatureGradientDefs() {
   )
 }
 
-function SuitePreviewFrame({ src, alt }: { src: string; alt: string }) {
+function SuitePreviewFrame({
+  src,
+  alt,
+  chromeClass,
+}: {
+  src: string
+  alt: string
+  chromeClass: string
+}) {
   return (
-    <div className="staffos-suite-preview absolute right-0 bottom-0 z-[2] w-[96%] max-w-none translate-x-[3%] translate-y-[5%] sm:w-[94%] sm:translate-x-[4%] md:w-[92%] lg:translate-x-[6%] lg:translate-y-[7%]">
-      <div className="overflow-hidden rounded-tl-2xl bg-[#f6f2ea] shadow-[0_16px_44px_rgba(0,0,0,0.32)]">
+    <div className="staffos-suite-preview absolute right-0 bottom-0 z-[2] w-[98%] max-w-none translate-x-[4%] sm:w-[96%] sm:translate-x-[5%] md:w-[94%] lg:translate-x-[7%]">
+      <div className="staffos-suite-preview-frame">
         <div
-          className="flex items-center gap-1.5 px-3 py-2 sm:px-3.5 sm:py-2.5"
+          className={cn('staffos-suite-preview-glass', chromeClass)}
           aria-hidden="true"
         >
-          <span className="size-2 rounded-full bg-[#d4d0c8] sm:size-2.5" />
-          <span className="size-2 rounded-full bg-[#d4d0c8] sm:size-2.5" />
-          <span className="size-2 rounded-full bg-[#d4d0c8] sm:size-2.5" />
+          <div className="staffos-suite-window-chrome">
+            <span className="staffos-suite-chrome-dot size-2 sm:size-2.5" />
+            <span className="staffos-suite-chrome-dot size-2 sm:size-2.5" />
+            <span className="staffos-suite-chrome-dot size-2 sm:size-2.5" />
+          </div>
         </div>
-        <img
-          src={src}
-          alt={alt}
-          className="block w-full object-cover object-left-top"
-          loading="lazy"
-        />
+        <div className="staffos-suite-preview-body">
+          <img
+            src={src}
+            alt={alt}
+            className="staffos-suite-preview-image"
+            loading="lazy"
+          />
+        </div>
       </div>
     </div>
   )
@@ -92,7 +104,7 @@ export default function StaffOsSuiteSection() {
         <p className="text-[10px] font-medium tracking-[0.22em] text-muted uppercase sm:text-[11px]">
           Powering Every Hire
         </p>
-        <h2 className="mt-3 font-heading text-3xl font-bold text-foreground sm:mt-4 sm:text-4xl lg:text-[2.5rem]">
+        <h2 className="mt-3 font-heading text-2xl font-bold text-foreground sm:mt-4 sm:text-4xl lg:text-[2.5rem]">
           StaffOS
           <StaffOsTrademark className="text-[0.42em]" />
         </h2>
@@ -116,20 +128,24 @@ export default function StaffOsSuiteSection() {
           <article
             key={card.id}
             className={cn(
-              'staffos-suite-card relative min-h-[420px] overflow-hidden rounded-2xl sm:min-h-[400px] md:min-h-[380px] lg:min-h-[360px]',
+              'staffos-suite-card relative min-h-[430px] overflow-hidden rounded-2xl sm:min-h-[410px] md:min-h-[390px] lg:min-h-[370px]',
               card.gradientClass,
             )}
           >
-            <div className="relative z-10 max-w-[85%] px-4 pt-5 sm:max-w-[78%] sm:px-5 sm:pt-6">
-              <h3 className="font-heading text-sm font-bold leading-snug text-foreground sm:text-base">
+            <div className="relative z-10 w-full px-4 pt-5 pb-[42%] sm:px-5 sm:pt-6 sm:pb-[40%]">
+              <h3 className="w-full font-heading text-sm font-bold leading-snug text-foreground sm:text-base">
                 {card.title}
               </h3>
-              <p className="mt-2 text-[11px] leading-relaxed text-foreground/90 sm:text-xs">
+              <p className="mt-2 w-full text-[11px] leading-relaxed text-foreground/90 sm:text-xs">
                 {card.description}
               </p>
             </div>
 
-            <SuitePreviewFrame src={card.image} alt={card.imageAlt} />
+            <SuitePreviewFrame
+              src={card.image}
+              alt={card.imageAlt}
+              chromeClass={card.previewChromeClass}
+            />
           </article>
         ))}
       </motion.div>
@@ -148,7 +164,7 @@ export default function StaffOsSuiteSection() {
           return (
             <li
               key={feature.id}
-              className="inline-flex items-center gap-2 text-[10px] text-muted sm:text-[11px]"
+              className="inline-flex max-w-full items-center gap-2 text-center text-[10px] text-muted sm:text-[11px]"
             >
               <Icon
                 className="suite-feature-icon-gradient size-3.5 shrink-0 sm:size-4"

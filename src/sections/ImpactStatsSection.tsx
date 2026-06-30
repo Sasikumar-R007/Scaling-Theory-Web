@@ -46,7 +46,7 @@ function ImpactStatItem({ stat, index }: { stat: ImpactStat; index: number }) {
         {stat.suffix}
       </p>
       <p
-        className="whitespace-nowrap text-[10px] leading-none sm:text-[11px]"
+        className="max-w-[11rem] text-center text-[10px] leading-tight sm:max-w-none sm:whitespace-nowrap sm:text-[11px]"
         style={{ color: LABEL_COLOR }}
       >
         {stat.label}

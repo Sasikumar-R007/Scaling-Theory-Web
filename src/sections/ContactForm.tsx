@@ -5,6 +5,7 @@ import { submitContactForm } from '@/utils/contactForm'
 export default function ContactForm() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
   const [content, setContent] = useState('')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>(
     'idle',
@@ -16,13 +17,14 @@ export default function ContactForm() {
     setStatus('loading')
     setFeedback('')
 
-    const result = await submitContactForm({ name, email, content })
+    const result = await submitContactForm({ name, email, phone, content })
 
     if (result.ok) {
       setStatus('success')
       setFeedback(result.message)
       setName('')
       setEmail('')
+      setPhone('')
       setContent('')
       return
     }
@@ -67,6 +69,25 @@ export default function ContactForm() {
             autoComplete="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            className="contact-input"
+            disabled={status === 'loading'}
+          />
+        </div>
+
+        <div>
+          <label htmlFor="contact-phone" className="contact-label">
+            Phone Number
+          </label>
+          <input
+            id="contact-phone"
+            name="phone"
+            type="tel"
+            required
+            autoComplete="tel"
+            inputMode="tel"
+            placeholder="+91 9900328009"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
             className="contact-input"
             disabled={status === 'loading'}
           />

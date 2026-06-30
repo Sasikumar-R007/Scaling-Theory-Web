@@ -335,9 +335,13 @@
 
   .why-staffos-card {
     background: linear-gradient(
-      90deg,
-      var(--color-why-staffos-start) 0%,
-      var(--color-why-staffos-end) 100%
+      to bottom left,
+      #6290ff 0%,
+      #4f5fff 18%,
+      #464cff 32%,
+      #343551 58%,
+      #1a1d42 82%,
+      #121421 100%
     );
   }
 
@@ -372,10 +376,115 @@
   .staffos-suite-card-2 {
     background: linear-gradient(
       160deg,
-      #c9caff 0%,
-      #575df1 48%,
-      #000599 100%
+      #575dff 0%,
+      #464cff 32%,
+      #343551 68%,
+      #252860 100%
     );
+  }
+
+  .staffos-suite-card-2::before {
+    display: block;
+    background: radial-gradient(
+      ellipse 42% 36% at 100% 0%,
+      rgba(255, 255, 255, 0.52) 0%,
+      rgba(255, 255, 255, 0.1) 38%,
+      transparent 68%
+    );
+  }
+
+  .staffos-suite-preview-frame {
+    overflow: hidden;
+    border-radius: 18px 0 0 0;
+    box-shadow: 0 16px 44px rgba(0, 0, 0, 0.32);
+  }
+
+  .staffos-suite-preview-glass {
+    position: relative;
+    z-index: 2;
+    border-radius: 18px 0 0 0;
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    border-bottom: none;
+    overflow: hidden;
+  }
+
+  .staffos-suite-window-chrome {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 9px 14px 10px;
+    background: transparent;
+    border: none;
+  }
+
+  .staffos-suite-chrome-dot {
+    border-radius: 9999px;
+    background: rgba(212, 196, 168, 0.72);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.35);
+  }
+
+  .staffos-suite-chrome-1 {
+    background: linear-gradient(
+      90deg,
+      rgba(194, 95, 0, 0.96) 0%,
+      rgba(194, 95, 0, 0.62) 42%,
+      rgba(194, 95, 0, 0.18) 78%,
+      rgba(194, 95, 0, 0.04) 100%
+    );
+  }
+
+  .staffos-suite-chrome-2 {
+    background: linear-gradient(
+      90deg,
+      rgba(52, 53, 81, 0.94) 0%,
+      rgba(70, 76, 255, 0.78) 100%
+    );
+  }
+
+  .staffos-suite-chrome-3 {
+    background: linear-gradient(
+      90deg,
+      rgba(183, 61, 106, 0.94) 0%,
+      rgba(183, 61, 106, 0.58) 45%,
+      rgba(255, 113, 165, 0.28) 78%,
+      rgba(255, 113, 165, 0.06) 100%
+    );
+  }
+
+  .staffos-suite-preview-body {
+    position: relative;
+    z-index: 3;
+    margin-top: -1px;
+    overflow: hidden;
+    line-height: 0;
+    background: #ffffff;
+  }
+
+  .staffos-suite-preview-image {
+    display: block;
+    width: 100%;
+    max-height: 188px;
+    margin: 0;
+    padding: 0;
+    object-fit: cover;
+    object-position: left top;
+    vertical-align: top;
+  }
+
+  @media (min-width: 640px) {
+    .staffos-suite-preview-image {
+      max-height: 200px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .staffos-suite-preview-image {
+      max-height: 212px;
+    }
   }
 
   .staffos-suite-card-3 {
@@ -398,8 +507,12 @@
   .bgv-cta-left {
     background: linear-gradient(
       90deg,
-      #fffbfb 0%,
-      #8b94f3 50%,
+      #ffffff 0%,
+      #fafbff 22%,
+      #e8ebff 38%,
+      #b8bff8 54%,
+      #8b94f3 72%,
+      #6a5cf0 88%,
       #511def 100%
     );
   }
@@ -436,6 +549,16 @@
   .bgv-icon-inner {
     border-radius: 9999px;
     background: var(--color-bgv-icon);
+  }
+
+  .testimonial-card-solid {
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    border: 1px solid rgba(226, 232, 240, 0.9);
+    box-shadow:
+      0 12px 40px rgba(0, 20, 60, 0.16),
+      0 2px 6px rgba(0, 0, 0, 0.04);
   }
 
   .testimonial-card-glass {

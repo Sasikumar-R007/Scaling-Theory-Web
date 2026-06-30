@@ -1,19 +1,6 @@
-/**
- * Testimonials data — add new entries by copying a block below.
- *
- * Optional avatar: place image in src/assests/testimonials/ and import it:
- *   import avatarName from '@/assests/testimonials/filename.jpg'
- *
- * Example new entry:
- * {
- *   id: 'unique-id',
- *   quote: 'Your testimonial text here...',
- *   name: 'Full Name',
- *   role: 'Job Title',
- *   company: 'Company Name',
- *   avatar: avatarName, // optional — omit for initials fallback
- * },
- */
+import avatarOne from '@/assests/bgv/avatar-01.jpg'
+import avatarTwo from '@/assests/bgv/avatar-02.jpeg'
+import avatarThree from '@/assests/bgv/avatar-03.jpg'
 
 export interface Testimonial {
   id: string
@@ -32,6 +19,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Mubarak Begum',
     role: 'HR Head',
     company: 'Kristal.ai',
+    avatar: avatarOne,
   },
   {
     id: 'sample-two',
@@ -40,6 +28,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Priya Sharma',
     role: 'VP of Talent',
     company: 'Pixis',
+    avatar: avatarTwo,
   },
   {
     id: 'sample-three',
@@ -48,6 +37,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Arjun Mehta',
     role: 'Founder',
     company: 'Whatfix',
+    avatar: avatarThree,
   },
   {
     id: 'sample-four',
@@ -56,6 +46,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Neha Kapoor',
     role: 'Director of HR',
     company: 'Razorpay',
+    avatar: avatarTwo,
   },
   {
     id: 'sample-five',
@@ -64,6 +55,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Rahul Verma',
     role: 'CTO',
     company: 'CleverTap',
+    avatar: avatarOne,
   },
   {
     id: 'sample-six',
@@ -72,6 +64,7 @@ export const TESTIMONIALS: Testimonial[] = [
     name: 'Ananya Iyer',
     role: 'People Operations Lead',
     company: 'Freshworks',
+    avatar: avatarThree,
   },
 ]
 

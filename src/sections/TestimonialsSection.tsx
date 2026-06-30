@@ -20,7 +20,7 @@ export default function TestimonialsSection() {
       className="bg-background py-8 sm:py-10"
     >
       <motion.div
-        className="testimonials-panel relative overflow-hidden rounded-3xl px-5 py-6 sm:px-7 sm:py-8 lg:px-10 lg:py-9"
+        className="testimonials-panel relative overflow-hidden rounded-2xl px-4 py-6 sm:rounded-3xl sm:px-7 sm:py-8 lg:px-10 lg:py-9"
         variants={fadeUp(0)}
         initial="hidden"
         whileInView="visible"
@@ -35,7 +35,7 @@ export default function TestimonialsSection() {
 
         <div className="relative z-10 grid items-start gap-6 lg:grid-cols-2 lg:gap-10">
           <motion.div
-            className="flex flex-col gap-3 sm:gap-4"
+            className="flex flex-col gap-3 text-center sm:gap-4 sm:text-left"
             variants={fadeUp(0.08)}
             initial="hidden"
             whileInView="visible"
@@ -44,7 +44,7 @@ export default function TestimonialsSection() {
             <h2 className="font-heading text-xl font-bold leading-tight text-foreground sm:text-2xl lg:text-3xl">
               Trusted by Our Clients
             </h2>
-            <p className="max-w-md text-xs leading-relaxed text-foreground/90 sm:text-sm">
+            <p className="mx-auto max-w-md text-xs leading-relaxed text-foreground/90 sm:mx-0 sm:text-sm">
               Discover how organizations have successfully scaled their hiring
               with ScalingTheory and StaffOS. Our clients share their
               experiences, outcomes, and the impact of our partnership.

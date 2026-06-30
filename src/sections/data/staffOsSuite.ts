@@ -9,6 +9,7 @@ export interface StaffOsSuiteCard {
   image: string
   imageAlt: string
   gradientClass: string
+  previewChromeClass: string
 }
 
 export interface StaffOsSuiteFeature {
@@ -25,6 +26,7 @@ export const STAFFOS_SUITE_CARDS: StaffOsSuiteCard[] = [
     image: staffOsSuiteP1,
     imageAlt: 'Recruitment excellence dashboard with interview drop rate and quality metrics',
     gradientClass: 'staffos-suite-card-1',
+    previewChromeClass: 'staffos-suite-chrome-1',
   },
   {
     id: 'talent-pipeline',
@@ -34,6 +36,7 @@ export const STAFFOS_SUITE_CARDS: StaffOsSuiteCard[] = [
     image: staffOsSuiteP2,
     imageAlt: 'Talent pipeline command center with candidate journey kanban board',
     gradientClass: 'staffos-suite-card-2',
+    previewChromeClass: 'staffos-suite-chrome-2',
   },
   {
     id: 'jd-management',
@@ -43,6 +46,7 @@ export const STAFFOS_SUITE_CARDS: StaffOsSuiteCard[] = [
     image: staffOsSuiteP3,
     imageAlt: 'Recruitment request and job description management library',
     gradientClass: 'staffos-suite-card-3',
+    previewChromeClass: 'staffos-suite-chrome-3',
   },
 ]
 

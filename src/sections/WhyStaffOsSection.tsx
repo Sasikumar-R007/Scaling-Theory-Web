@@ -44,7 +44,7 @@ export default function WhyStaffOsSection() {
       </motion.div>
 
       <motion.div
-        className="relative mx-auto mt-8 max-w-2xl sm:mt-10 lg:mt-12"
+        className="relative mx-auto mt-8 w-full max-w-2xl px-1 sm:mt-10 sm:px-0 lg:mt-12"
         variants={fadeUp(0.1)}
         initial="hidden"
         whileInView="visible"

@@ -10,7 +10,7 @@ import {
 } from 'lucide-react'
 import logo from '@/assests/logos/logo.jpeg'
 import StaffOsTrademark from '@/components/StaffOsTrademark'
-import { cn } from '@/utils'
+import { cn, CONTACT_EMAIL, STAFFOS_URL } from '@/utils'
 
 const MUTED = '#a1a1a1'
 
@@ -97,19 +97,38 @@ function FooterColumn({
   title,
   links,
   titleTrademark = false,
+  titleHref,
 }: {
   title: string
   links: readonly { label: string; href: string }[]
   titleTrademark?: boolean
+  titleHref?: string
 }) {
+  const titleInner = (
+    <>
+      <span className="text-gradient-footer">{title}</span>
+      {titleTrademark && (
+        <StaffOsTrademark className="text-[0.5em] text-foreground" />
+      )}
+    </>
+  )
+
   return (
     <div>
-      <h3 className="inline-flex items-start text-sm font-semibold">
-        <span className="text-gradient-footer">{title}</span>
-        {titleTrademark && (
-          <StaffOsTrademark className="text-[0.5em] text-foreground" />
-        )}
-      </h3>
+      {titleHref ? (
+        <a
+          href={titleHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-start border-b border-[#333333] pb-2 text-sm font-semibold transition-opacity hover:opacity-85"
+        >
+          {titleInner}
+        </a>
+      ) : (
+        <h3 className="inline-flex items-start border-b border-[#333333] pb-2 text-sm font-semibold">
+          {titleInner}
+        </h3>
+      )}
       <ul className="mt-4 space-y-2.5" role="list">
         {links.map((link) => (
           <li key={link.label}>
@@ -208,19 +227,24 @@ export default function Footer({ className }: FooterProps) {
           </div>
 
           <FooterColumn title="Recruitment Services" links={recruitmentLinks} />
-          <FooterColumn title="StaffOS" links={staffOsLinks} titleTrademark />
+          <FooterColumn
+            title="StaffOS"
+            links={staffOsLinks}
+            titleTrademark
+            titleHref={STAFFOS_URL}
+          />
           <FooterColumn title="Company" links={companyLinks} />
         </div>
 
         <div className="mt-10 border-t border-[#1f1f1f] pt-8">
           <div className="flex flex-col items-start justify-between gap-5 sm:flex-row sm:flex-wrap sm:items-center lg:gap-8">
             <a
-              href="mailto:scalingtheory@gmail.com"
+              href={`mailto:${CONTACT_EMAIL}`}
               className="inline-flex items-center gap-2 text-xs sm:text-sm"
               style={{ color: MUTED }}
             >
               <FooterGradientIcon icon={Mail} />
-              scalingtheory@gmail.com
+              {CONTACT_EMAIL}
             </a>
 
             <a

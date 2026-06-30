@@ -25,11 +25,11 @@ function buildStackSlots(count: number): StackSlot[] {
   const layerStep = 8
 
   return Array.from({ length: count }, (_, index) => ({
-    scale: 1 - index * 0.026,
+    scale: 1,
     y: frontYOffset - index * layerStep,
     x: 0,
     rotate: 0,
-    opacity: Math.max(0.28, 1 - index * 0.13),
+    opacity: index === 0 ? 1 : Math.max(0.42, 0.88 - index * 0.12),
     zIndex: 70 - index * 10,
   }))
 }
@@ -90,21 +90,23 @@ function NavButton({
 function TestimonialCardContent({
   testimonial,
   interactive,
+  isFront,
   onPrev,
   onNext,
   controlsDisabled,
 }: {
   testimonial: Testimonial
   interactive?: boolean
+  isFront?: boolean
   onPrev?: () => void
   onNext?: () => void
   controlsDisabled?: boolean
 }) {
   return (
     <article
-      className={`testimonial-card-glass relative flex h-full min-h-[152px] flex-col gap-3 rounded-xl p-4 sm:min-h-[160px] sm:gap-3.5 sm:p-5 ${
-        interactive ? '' : 'pointer-events-none'
-      }`}
+      className={`relative flex h-[184px] w-full flex-col gap-3 rounded-xl px-4 pt-4 pb-6 sm:h-[196px] sm:gap-3.5 sm:px-5 sm:pt-5 sm:pb-7 ${
+        isFront ? 'testimonial-card-solid' : 'testimonial-card-glass'
+      } ${interactive ? '' : 'pointer-events-none'}`}
     >
       <blockquote className="relative z-1 text-left text-sm leading-relaxed font-medium text-slate-800 sm:text-[15px]">
         {testimonial.quote}
@@ -228,12 +230,12 @@ export default function TestimonialCardStack() {
   return (
     <div
       className="relative mx-auto w-full max-w-md perspective-distant"
-      style={{ minHeight: 220 + topPeek }}
+      style={{ minHeight: 248 + topPeek }}
     >
       <div
         className="relative"
         style={{
-          height: 192 + topPeek,
+          height: 216 + topPeek,
           paddingTop: topPeek,
         }}
       >
@@ -262,6 +264,7 @@ export default function TestimonialCardStack() {
               <TestimonialCardContent
                 testimonial={testimonial}
                 interactive={isFront}
+                isFront={stackPosition === 0}
                 onPrev={goPrev}
                 onNext={goNext}
                 controlsDisabled={phase !== 'idle'}
