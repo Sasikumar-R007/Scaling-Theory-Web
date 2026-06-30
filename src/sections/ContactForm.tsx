@@ -85,7 +85,7 @@ export default function ContactForm() {
             required
             autoComplete="tel"
             inputMode="tel"
-            placeholder="+91 9900328009"
+            // placeholder="+91 9900328009"
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             className="contact-input"
